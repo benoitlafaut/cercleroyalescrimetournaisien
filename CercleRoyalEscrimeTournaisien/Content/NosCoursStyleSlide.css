@@ -1,0 +1,73 @@
+﻿html {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    min-height: 100vh;
+}
+
+#themesDifferents td:first-child {
+    width: 10%;
+    text-align: center;
+}
+
+#themesDifferents td:first-child:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+#themesDifferents td:last-child:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+#themesSelected2 li:hover {
+    color: blue;
+}
+
+#themesSelected2 label {
+    font-size: 20px;
+}
+
+#themesDifferents td:last-child {
+    width: 10%;
+    text-align: center;
+}
+
+#themesDifferents td:nth-child(2) {
+    width: 80%;
+}
+
+#themesDifferents table {
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#themesDifferents {
+    border: 3px solid #1C1D21;
+    width: 800px;
+}
+
+.jumbotronNosCours {
+    overflow-y: auto;
+    height: 112%;
+    margin-top: 5%;
+}
+
+.classVideoIFrame {
+    left: 28%;
+    position: fixed;
+    top: 33%;
+    width: 33%;
+    height: 53%;
+}
+
+.classTableThemesSelected {
+    border: 10px ridge rgba(255,0,0,0.12);
+    border-radius: 40px;
+    position: fixed;
+    left: 10px;
+    top: 36%;
+    width:24%;
+}

@@ -1,0 +1,71 @@
+﻿@using CercleRoyalEscrimeTournaisien.Models;
+
+@model ModelViewEpubFile
+@{
+    string IsChangeLanguageEnglish = Model.IsChangeLanguageEnglish ? "checked" : "";
+    string IsChangeLanguageAllemand = Model.IsChangeLanguageAllemand ? "checked" : "";
+    string IsChangeLanguageEspagnol = Model.IsChangeLanguageEspagnol ? "checked" : "";
+    string IsChangeLanguageNeerlandais = Model.IsChangeLanguageNeerlandais ? "checked" : "";
+}
+<script>
+    $(window).load(function () {
+        removeInputHidden();
+    })
+
+    function removeInputHidden() {
+        if ($('input[name="IsChangeLanguageEnglish"]').length == 2) {
+            $('input[name="IsChangeLanguageEnglish"]').last().remove();
+        }
+        if ($('input[name="IsChangeLanguageAllemand"]').length == 2) {
+            $('input[name="IsChangeLanguageAllemand"]').last().remove();
+        }
+        if ($('input[name="IsChangeLanguageEspagnol"]').length == 2) {
+            $('input[name="IsChangeLanguageEspagnol"]').last().remove();
+        }
+        if ($('input[name="IsChangeLanguageNeerlandais"]').length == 2) {
+            $('input[name="IsChangeLanguageNeerlandais"]').last().remove();
+        }
+    }
+</script>
+
+<div id="buttonsForBlueToothDiv" style="  width: 100%;height: 10%;">
+    <div class="switch-holder" style="width: 149px;position: fixed; ">
+        <div class="switch-label">
+            <i class="material-icons" style="font-size:20px">language</i><span style="vertical-align: super; font-size: 13px;">Anglais</span>
+        </div>
+        <div class="switch-toggle">
+            @Html.CheckBoxFor(model => model.IsChangeLanguageEnglish, new { @checked = IsChangeLanguageEnglish })
+            <label for="@Model.IsChangeLanguageEnglish" onclick="ChangeEpub('/Home/ChangeToEnglish','0',0);"></label>
+        </div>
+    </div>
+
+    <div class="switch-holder" style="width: 160px;  left: 179px;position: fixed;">
+        <div class="switch-label">
+            <i class="material-icons" style="font-size:20px">language</i><span style="vertical-align: super; font-size: 13px;">Espagnol</span>
+        </div>
+        <div class="switch-toggle">
+            @Html.CheckBoxFor(model => model.IsChangeLanguageEspagnol, new { @checked = IsChangeLanguageEspagnol })
+            <label for="@Model.IsChangeLanguageEspagnol" onclick="ChangeEpub('/Home/ChangeToEspagnol','0',0);"></label>
+        </div>
+    </div>
+
+    <div class="switch-holder" style="width: 166px;  left: 356px;position: fixed;">
+        <div class="switch-label">
+            <i class="material-icons" style="font-size:20px">language</i><span style="vertical-align: super; font-size: 13px;">Néerlandais</span>
+        </div>
+        <div class="switch-toggle">
+            @Html.CheckBoxFor(model => model.IsChangeLanguageNeerlandais, new { @checked = IsChangeLanguageNeerlandais })
+            <label for="@Model.IsChangeLanguageNeerlandais" onclick="ChangeEpub('/Home/ChangeToNeerlandais','0',0);"></label>
+        </div>
+    </div>
+
+    <div class="switch-holder" style="width: 156px;  left: 543px;position: fixed; ">
+        <div class="switch-label">
+            <i class="material-icons" style="font-size:20px">language</i><span style="vertical-align: super; font-size: 13px;">Allemand</span>
+        </div>
+        <div class="switch-toggle">
+            @Html.CheckBoxFor(model => model.IsChangeLanguageAllemand, new { @checked = IsChangeLanguageAllemand })
+            <label for="@Model.IsChangeLanguageAllemand" onclick="ChangeEpub('/Home/ChangeToAllemand','0',0);"></label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@model CercleRoyalEscrimeTournaisien.Historique 
+
+@{
+   
+}
+
+<link href="@Url.Content("~/Content/HistoriqueStyle.css")" rel="stylesheet" type="text/css" />
+
+<div class="jumbotronHistorique">
+    @*<pre>@Html.DisplayFor(model => model.Histoire)</pre>*@
+    <asp:label>@Html.Raw(CercleRoyalEscrimeTournaisien.Historique.Histoire)</asp:label>
+</div>
+
+

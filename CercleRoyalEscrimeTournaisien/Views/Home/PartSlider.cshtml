@@ -1,0 +1,61 @@
+﻿@using CercleRoyalEscrimeTournaisien.Models;
+
+@model ModelViewEpubFile
+<style>
+    .tooltip2 .tooltiptext2 {
+        visibility: hidden;
+        width: 88%;
+        background-color: #555;
+        color: #fff;        
+        border-radius: 6px;
+        padding: 5px 0;
+        position: fixed;
+        bottom: 125%;
+        top: 22%;
+        left: 11px;
+        height: 74%;
+        opacity: 0;
+        transition: opacity 1s;
+        z-index: 4;
+    }
+
+    .tooltip2 {
+        position: relative;
+        
+    }
+
+        .tooltip2:hover .tooltiptext2 {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip2 .tooltiptext2::after {
+            content: "";
+            position: absolute;
+        }
+    .tooltip2:hover .tooltiptext2 {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+
+<div>
+    <div class="tooltip2">
+        <i class="fa fa-question-circle" aria-hidden="true" style="float: right; margin-top: -21px; left: -137px; position: relative;"></i>
+
+        @{ 
+            string texteFrench = string.Empty;
+            for (int i=0; i < Model.RowsEpubToShow.Count();i++)
+            {
+                texteFrench += "  \u2022  " + Model.RowsEpubToShow[i].ToString() + "\r\n" + "\r\n";
+            }
+        }
+
+        <span class="tooltiptext2"><pre>@texteFrench</pre></span>
+    </div>
+
+    
+    
+    <i class="fa fa-thin fa-play" id="playSoundFR" onclick="PlaySound('fr');" style="width: 124px; float: right; margin-top: -21px;  "></i>
+    <input type="text" id="numeroLigne" style="text-align: center;float: right;margin-top: -22px;width: 87px;" value="@Model.CurrentLigne / @Model.CountRowsEpub">
+</div>
+<input style="width: 100%;" type="range" data-popup-enabled="true" name="myRange" min="0" max="@Model.CountRowsEpub" value="@Model.CurrentLigne" class="slider" id="myRange" onchange="changeCurrentLigne(this);ChangeEpub('/Home/ChangeEpub','0',0);">

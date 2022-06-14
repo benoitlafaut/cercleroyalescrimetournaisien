@@ -1,0 +1,35 @@
+﻿@using CercleRoyalEscrimeTournaisien.Models;
+
+@model ModelViewEpubFile
+
+<div class="content" style="font-size: 13px;width: 100%; ">
+    <span data-toggle="tooltip" title="Ce bouton va permettre la création d'un fichier texte (avec pour extension .epublaf) à partir d'un fichier epub. &#13;Et donc vous pourrez ouvrir le fichier epublaf via l'autre bouton.">
+        <div class="icon icon-book" onclick="CreateFileEpub();"><i class="fa fa-book"></i></div>
+    </span>
+
+    <span data-toggle="tooltip" title="Ce bouton va permettre d'ouvrir le fichier texte avec l'extension epublaf.">
+        <div class="icon icon-enter" onclick="ChangeEpub('/Home/ChangeEpub','0',0);"><i class="fa fa-folder-open-o"></i></div>
+    </span>
+
+    <span data-toggle="tooltip" title="Ce bouton fait une pagination vers le début du livre.">
+        <div class="icon icon-previous" onclick="ChangeEpub('/Home/ChangeEpub', '0',-5)"><i class="fa fa-angle-double-left"></i></div>
+    </span>
+
+    <span data-toggle="tooltip" title="Ce bouton fait une pagination vers la fin du livre.">
+        <div class="icon icon-next" onclick="ChangeEpub('/Home/ChangeEpub', '0',5);"><i class="fa fa-angle-double-right"></i></div>
+    </span>
+
+    <span data-toggle="tooltip" title="Ce bouton fait une pagination vers la fin du livre et lit le texte en français et dans l'autre langue sélectionnée.">
+        <div class="icon icon-automaticListen" onclick="ChangeEpub('/Home/ChangeEpub', '1',5);"><i class="fa fa-headphones "></i></div>
+    </span>
+
+    <span data-toggle="tooltip" title="Ce bouton lit le texte de manière automatique en français.">
+        <div class="icon icon-automaticListen" onclick="NextPaginationAutomatic('1');"><i class="fa fa-podcast "></i></div>
+    </span>
+
+    <span data-toggle="tooltip" title="Ce bouton lit le texte de manière automatique dans la langue autre que le français.">
+        <div class="icon icon-automaticListenForOtherFrancais" onclick="NextPaginationAutomatic('2');"><i class="fa fa-ravelry "></i></div>
+    </span>
+
+  
+</div>

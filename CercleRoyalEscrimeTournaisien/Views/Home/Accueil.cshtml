@@ -1,0 +1,34 @@
+﻿@model CercleRoyalEscrimeTournaisien.Accueil
+@{
+    ViewBag.Title = "Accueil";
+}
+
+@section css {
+    <link href="@Url.Content("~/Content/bootstrapMoi.css")" rel="stylesheet" />
+}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<body onload="" onunload="StopImage()">
+    <div class="jumbotronAccueil">
+        <div class="jumbotronAccueil_1">@{Html.RenderPartial("Accueil_Part_1", new CercleRoyalEscrimeTournaisien.Accueil());}</div>
+        <div>@{Html.RenderPartial("Accueil_Part_2", "Home");}</div>
+        <div>@{Html.RenderPartial("Accueil_Part_3", new CercleRoyalEscrimeTournaisien.Accueil());}</div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var timeout;
+
+    $(document).ready(function () {        
+       // timeout = setInterval("changeImage()", 5000);
+    });   
+
+    function changeImage() {
+        var nbr = Math.floor((Math.random() * 17) + 1);
+        document.getElementById("ImageDemarrage").src = "~/photos/photosdemarrage/" + nbr + ".jpg";
+    }
+
+    function StopImage() {       
+        clearTimeout(timeout);
+    }
+</script>  

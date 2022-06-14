@@ -1,0 +1,54 @@
+﻿
+<html id="layoutPage" style="overflow:hidden">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Cercle Royal Escrime Tournaisien</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("css", false)
+</head>
+<body style="height:75%;">
+    <div class="navbar navbar-fixed-top">
+        <div class="container First-Line">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav ">
+                    <li><img src="~/photos/divers/logodetournai.jpg" height="100" width="100" /></li>
+                    <li class="imageCercle">Cercle Royal Escrime Tournaisien</li>
+                    <li><img src="~/photos/divers/logodetournai.jpg" height="100" width="100" onclick="location.href ='@Url.Action("Epub", "Home")'"/></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container Second-Line">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Accueil", "Accueil", "Home")</li>
+                    <li>@Html.ActionLink("Agenda", "ControllerAgenda", "Home")</li>
+                    <li>@Html.ActionLink("Les catégories", "ControllerCategories", "Home")</li>
+                    <li>@Html.ActionLink("Photos", "ControllerPhotos", "Home")</li>
+                    <li>@Html.ActionLink("Historique", "ControllerHistorique", "Home")</li>
+                    <li>@Html.ActionLink("Activités", "ControllerActivites", "Home")</li>
+                    <li>@Html.ActionLink("Quelques sites intéressants", "ControllerQuelquesSites", "Home")</li>
+                    <li>@Html.ActionLink("Nos cours", "ControllerNosCours", "Home")</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    
+</body>
+</html>

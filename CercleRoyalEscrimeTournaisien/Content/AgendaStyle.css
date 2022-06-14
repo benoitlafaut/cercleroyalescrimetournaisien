@@ -1,0 +1,37 @@
+﻿.webgrid {
+    width: 30%;
+    text-align: center;
+    margin-left: 33%;
+    font-size: 27px;
+}
+
+    .webgrid th, .webgrid td {
+        border: 1px solid #C0C0C0;
+        padding: 5px;
+    }
+
+.header {
+    background-color: #E8E8E8;
+}
+
+.CelluleCouleurFleuret {
+    background-color: cornflowerblue;
+}
+
+.CelluleAujourdhui {
+    font-family: 'kellyanngothic';
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.CelluleCouleurEpee {
+    background-color: red;
+}
+
+.CelluleCouleurSabre {
+    background-color: forestgreen;
+}
+
+.jumbotronAgenda {
+    margin-top: 12%;
+}

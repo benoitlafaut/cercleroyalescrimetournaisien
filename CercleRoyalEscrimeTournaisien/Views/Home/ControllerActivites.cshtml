@@ -1,0 +1,15 @@
+﻿@model CercleRoyalEscrimeTournaisien.Activites
+
+@{
+    ViewBag.Title = "Activites";
+}
+
+<link href="@Url.Content("~/Content/ActivitesStyle.css")" rel="stylesheet" type="text/css" />
+
+<div class="jumbotronActivites">
+
+   
+    <asp:label>@Html.Raw(@CercleRoyalEscrimeTournaisien.Activites.ListeDesActivites)</asp:label>
+</div>
+
+

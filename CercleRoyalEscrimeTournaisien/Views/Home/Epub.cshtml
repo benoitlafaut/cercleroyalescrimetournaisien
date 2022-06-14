@@ -1,0 +1,150 @@
+﻿@using CercleRoyalEscrimeTournaisien.Models;
+
+@model ModelViewEpubFile
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>*@
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+
+    @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>*@
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    @* <script src="https://code.jquery.com/jquery-migrate-3.4.0.js"></script>*@
+
+
+    <style>
+        .collapsible {
+            background-color: #777;
+            color: yellowgreen;
+            cursor: pointer;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<script>
+    $(document).ready(function () {
+        $('.navbar-fixed-top').css("display", "none")
+        $('#layoutPage').removeAttr("style")
+    });
+</script>
+
+<audio id="audioElement1" class="fullWidth" controls="controls" src="" style="display:none"></audio>
+
+<div id="EpubDIV">
+
+    <button type="button" class="collapsible" id="btn_PartChargerFileDIV" onclick="ChangeLayout('/Home/Change_PartChargerFileDIV')">Charger Epub</button>
+    <button type="button" class="collapsible" id="btn_PartButtonsDIV" onclick="ChangeLayout('/Home/Change_PartButtonsDIV');">Boutons de navigation</button>
+    <button type="button" class="collapsible" id="btn_PartSliderDIV" onclick="ChangeLayout('/Home/Change_PartSliderDIV');">Slider</button>
+    <button type="button" class="collapsible" id="btn_PartFrenchDIV" onclick="ChangeLayout('/Home/Change_PartFrenchDIV');">Texte français</button>
+    <button type="button" class="collapsible" id="btn_PartChangeLanguageDIV" onclick="ChangeLayout('/Home/Change_PartChangeLanguageDIV');">Boutons to change language</button>
+    <button type="button" class="collapsible" id="btn_PartTranslateDIV" onclick="ChangeLayout('/Home/Change_PartTranslateDIV');">View texte translated</button>
+    @Html.TextBox("hour",  "",new { style = "width: 50px;text-align:center;margin-left: 43px;", @Value = "5" })
+    <button type="button" class="collapsible" id="btn_SayHour" onclick="SayHour();">Say hour each x minutes</button>
+    <div id="PartChargerFileDIV">
+        @Html.Partial("PartChargerFile", Model)
+    </div>
+
+    <div id="PartButtonsDIV" class="contentDiv">
+        @Html.Partial("PartButtons", Model)
+    </div>
+
+    <div id="PartSliderDIV">
+        @Html.Partial("PartSlider", Model)
+    </div>
+
+    @{
+        string cssLayout_PartFrenchDIV_NotVisible = @Model.LayoutPosition == 2 ? "display:none" : "";
+        string cssLayout_PartFrenchDIV_StyleChange = @Model.LayoutPosition == 1 ? "height:100%" : "height:47%";
+    }
+
+    <div id="PartFrenchDIV" style="@cssLayout_PartFrenchDIV_StyleChange ; @cssLayout_PartFrenchDIV_NotVisible">
+        @Html.Partial("PartFrench", Model)
+    </div>
+
+    @{
+        string cssLayout_PartChangeLanguageDIV_NotVisible = @Model.LayoutPosition == 1 || @Model.LayoutPosition == 1 ? "display:none" : "";
+    }
+
+
+
+    <div id="PartChangeLanguageDIV" style="margin-top: 0.3%;@cssLayout_PartChangeLanguageDIV_NotVisible">
+        @Html.Partial("PartChangeLanguage", Model)
+    </div>
+
+    @{
+        string cssLayout_PartTranslateDIV_NotVisible = @Model.LayoutPosition == 1 ? "display:none" : "";
+        string cssLayout_PartTranslateDIV_StyleChange = @Model.LayoutPosition == 2 ? "margin-top:0%;height: 100%;" : "margin-top: 0%;height: 60%;";
+    }
+
+    <div id="PartTranslateDIV" style="@cssLayout_PartTranslateDIV_StyleChange ; @cssLayout_PartTranslateDIV_NotVisible">
+        @Html.Partial("PartTranslate", Model)
+    </div>
+</div>
+
+<div id="modal" class="modal fade" data-backdrop="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-md">Liste des livres</div> <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <ul style="margin-right: 35px;">
+                        @foreach (var item in Model.ListeBooks)
+                        {
+                            ModelViewBooks booksParAuteur = Model.ListeBooks.Where(x => x.NomAuteur == item.NomAuteur).FirstOrDefault();
+                            <span style="font-style:italic;">@booksParAuteur.NomAuteur</span>
+
+                            foreach (var book in booksParAuteur.OneBook)
+                            {
+                                <li> <span style="width: 184px;display: -webkit-inline-box;">@book.Livre</span> <a href=@book.Link>Lien</a></li>
+                            }
+                        }
+                    </ul>
+                </table>
+            </div>
+            <div class="modal-footer"> <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> </div>
+        </div>
+    </div>
+</div>
+
+@Styles.Render("~/styles/myStylessheet.css")
+@Styles.Render("~/styles/StyleTranslateOtherLangue.css")
+@Styles.Render("~/styles/newbootstrap.css")
+
+@Html.HiddenFor(model => model.CurrentLigne)
+@Html.HiddenFor(model => model.IsToListen)
+@{
+    for (int i = 0; i < Model.RowsEpub.Count; i++)
+    {
+        @Html.HiddenFor(model => model.RowsEpub[i])
+    }
+
+    for (int i = 0; i < Model.RowsEpubToShow.Count; i++)
+    {
+        @Html.HiddenFor(model => model.RowsEpubToShow[i])
+        @Html.HiddenFor(model => model.RowsEpubToShowTranslated[i])
+    }
+}
+
+@Html.HiddenFor(model => model.LayoutPosition)
+@Html.HiddenFor(model => model.CountRowsEpub)
+@Html.HiddenFor(model => model.RowsEpubToShow.Count)
+@Html.HiddenFor(model => model.NombreDeLignesToSelect)
+@Html.HiddenFor(model => model.IsToListen)
+@Html.HiddenFor(model => model.IsToListenOnlyOtherLanguage)
+
+
+
+@Html.HiddenFor(model => model.IsVisible_PartChargerFileDIV)
+@Html.HiddenFor(model => model.IsVisible_PartButtonsDIV)
+@Html.HiddenFor(model => model.IsVisible_PartSliderDIV)
+@Html.HiddenFor(model => model.IsVisible_PartFrenchDIV)
+@Html.HiddenFor(model => model.IsVisible_PartChangeLanguageDIV)
+@Html.HiddenFor(model => model.IsVisible_PartTranslateDIV)
+
+
+<script src="~/Scripts/newEpub.js" type="text/javascript"></script>

@@ -1,0 +1,26 @@
+﻿@model CercleRoyalEscrimeTournaisien.Catégories
+
+@{
+    ViewBag.Title = "Catégories";
+}
+
+<link href="@Url.Content("~/Content/CatégoriesStyle.css")" rel="stylesheet" type="text/css" />
+
+<script>
+    function frameLoaded() {       
+
+        document.getElementById('frameYoutube').setAttribute('src', '');;
+        
+       
+    };
+</script>
+
+<div class="jumbotronCatégories">
+
+
+    @Html.Raw(@CercleRoyalEscrimeTournaisien.Catégories.ListeDesCatégories)
+
+     
+
+</div>
+

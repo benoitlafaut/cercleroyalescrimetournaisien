@@ -1,0 +1,206 @@
+.First-Line {
+    background-color: white;
+    border-color: red;
+}
+
+.imageCercle {
+    font-family: 'kellyanngothic';
+    font-size: 50px;
+    color: red;
+    padding: 20px;
+}
+
+.cssForTitreCategories {
+    font-family: 'kellyanngothic';
+    font-size: 30px;
+    color: blue;
+}
+
+.cssForCategories {
+    font-family: 'kellyanngothic';
+    font-size: 27px;
+    color: firebrick;
+}
+
+@font-face {
+    font-family: 'kellyanngothic';
+    src: url('font/kellyanngothic.ttf');
+}
+
+.container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 100%) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    border-width: 0 0 1px;
+}
+
+.navbar-fixed-top {
+    top: 0;
+}
+
+@media (min-width: 78px) {
+    .navbar-nav > li {
+        float: left;
+    }
+}
+
+.jumbotron {
+    display: flex;
+    margin-top: 150px;
+}
+
+.jumbotronAccueil {
+    margin-top: 190px;
+    display: flex;
+}
+
+
+
+    .jumbotronAccueil div {
+        width: 33%;
+        border: 1px solid transparent;
+        /*height: 760px;*/
+    }
+
+
+.center-cropped {
+    width: 100%;
+    /*height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin: auto auto;
+    text-align: center;*/
+}
+
+.divImageCentral {
+    width: 33%;
+    height: 82%;
+    position: relative;
+}
+
+.imgImageCentral {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-box-shadow: 10px 9px 63px 27px #EA675B;
+}
+
+.jumbotronAccueil_1 div:first-child {
+    text-align: center;
+    width: 100%;
+    height: 65%;
+}
+
+.jumbotronAccueil_1 div:last-child {
+    text-align: center;
+    width: 59%;
+    height: 20%;
+}
+
+
+.jumbotronAccueil div div {
+    text-align: center;
+    width: 100%;
+}
+
+    .jumbotronAccueil div div pre {
+        /*font-family: 'kellyanngothic';*/
+        font-size: 18px;
+    }
+
+.Second-Line {
+    background-color: red;
+}
+
+    .Second-Line .navbar-nav > li > a {
+        color: blue;
+        font-family: 'kellyanngothic';
+        font-size: 26px;
+    }
+
+        .Second-Line .navbar-nav > li > a:hover,
+        .Second-Line .navbar-nav > li > a:focus {
+            color: #ffffff;
+            background-color: transparent;
+        }
+
+    .Second-Line > div > ul > li {
+        width: intrinsic;
+        /*min-width: 250px;*/
+    }
+
+        .Second-Line > div > ul > li:nth-child(1) {
+            min-width: 8%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(2) {
+            min-width: 8%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(3) {
+            min-width: 12%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(4) {
+            min-width: 8%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(5) {
+            min-width: 10%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(6) {
+            min-width: 9%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(7) {
+            min-width: 21%;
+        }
+
+        .Second-Line > div > ul > li:nth-child(8) {
+            min-width: 11%;
+        }
+
+
+
+.First-Line > div > ul {
+    margin-left: auto;
+    margin-right: auto;
+    width: 61em;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 1px 1px;
+}
+
+.nav:after {
+    clear: both;
+}
+
+.nav:before,
+.nav:after {
+    display: table;
+    content: " ";
+}

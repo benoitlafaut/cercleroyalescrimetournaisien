@@ -1,0 +1,25 @@
+﻿.jumbotronNosCours {
+    margin-top: 170px;
+    overflow-y: auto;
+    height: 112%;
+}
+
+.images {
+    display: flex;
+    border: 1px solid #333;
+    box-shadow: 8px 8px 5px #444;
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+    text-align: center;
+}
+
+.divForImages {
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    width: 300px;
+    height: 300px;
+    
+    background-color: transparent;
+    background-size: 100% 100%;
+}

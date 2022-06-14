@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CercleRoyalEscrimeTournaisien.LaSemaine>
+@{
+    ViewBag.Title = "Agenda";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 7);
+}
+
+<link href="@Url.Content("~/Content/AgendaStyle.css")" rel="stylesheet" type="text/css" />
+
+<div class="jumbotronAgenda">
+
+
+    <div style="text-align:center;font-size: 27px;">
+        <asp:label>Agenda des cours d'escrime pour la saison 2021 - 2022</asp:label>
+    </div>
+
+    <br /><br />
+    <div style="text-align:center;font-size: 27px;">
+        <input style="width:100px;height:40px;" type="button" value="<<" onclick="location.href='@Url.Action("ChangeMoisMoins1", "Home")'" />
+        <asp:label>@CercleRoyalEscrimeTournaisien.Agenda.DateCurrentMonth    @CercleRoyalEscrimeTournaisien.Agenda.DateCurrentYear</asp:label>
+        <input style="width:100px;height:40px;" type="button" value=">>" onclick="location.href='@Url.Action("ChangeMoisPlus1", "Home")'" />
+    </div>
+    <br />
+
+    <div>
+
+        @grid.GetHtml(
+          tableStyle: "webgrid",
+          fillEmptyRows: true,
+          headerStyle: "header",
+          mode: WebGridPagerModes.All,
+
+          columns: new[]  // colums in grid
+          {
+            grid.Column(format: @<text><p class="@item.PremierJour.ClassOfCell">@item.PremierJour.NummerOfDay</p></text>),
+            grid.Column(format: @<text><p class="@item.SecondJour.ClassOfCell">@item.SecondJour.NummerOfDay</p></text>),
+            grid.Column(format: @<text><p class="@item.TroisièmeJour.ClassOfCell">@item.TroisièmeJour.NummerOfDay</p></text>),
+            grid.Column(format: @<text><p class="@item.QuatrièmeJour.ClassOfCell">@item.QuatrièmeJour.NummerOfDay</p></text>),
+            grid.Column(format: @<text><p class="@item.CinquièmeJour.ClassOfCell">@item.CinquièmeJour.NummerOfDay</p></text>),
+            grid.Column(format: @<text><p class="@item.SixièmeJour.ClassOfCell">@item.SixièmeJour.NummerOfDay</p></text>),
+            grid.Column(format: @<text><p class="@item.SeptièmeJour.ClassOfCell">@item.SeptièmeJour.NummerOfDay</p></text>),
+          })
+
+    </div>
+
+    <br />
+
+    <div style="text-align:center;font-size:27px;">
+        <asp:label>@Html.Raw(@CercleRoyalEscrimeTournaisien.Agenda.TexteEnDessousDuCalendar)</asp:label>
+    </div>
+
+</div>
+

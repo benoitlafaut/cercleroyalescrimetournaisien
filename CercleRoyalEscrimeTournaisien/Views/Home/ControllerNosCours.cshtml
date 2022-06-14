@@ -1,0 +1,109 @@
+﻿@model CercleRoyalEscrimeTournaisien.NosCours
+@{
+    ViewBag.Title = "Nos cours";
+}
+
+@section css {
+    <link href="@Url.Content("~/Content/NosCoursStyleSlide.css")" rel="stylesheet" />
+}
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+        <link id="themecss" rel="stylesheet" type="text/css" href="//www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+        <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+        @*<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>*@
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+        <script>
+            $(window).load(function () {
+                $('#buttonPrevious').on("click", function () {
+                    $("#ThemeCursor").text(parseInt($("#ThemeCursor").text()) - 1);
+                    window.location = '@RouteNames.ControllerNosCours' + '/?newSelectedIndexTheme=' + $("#ThemeCursor").text();
+                });
+
+                $('#buttonNext').on("click", function () {
+                    $("#ThemeCursor").text(parseInt($("#ThemeCursor").text()) + 1);
+                    window.location = '@RouteNames.ControllerNosCours' + '/?newSelectedIndexTheme=' + $("#ThemeCursor").text();
+                });
+            })
+
+            function addUrlToVideo(url) {
+                $("#videoIframe").attr('src', url);
+            }
+
+            function hover(element) {
+                element.setAttribute('style', 'color:blue');
+            }
+
+            function unhover(element) {
+                element.setAttribute('style', 'color:black');
+            }
+
+            function showPopup(element) {
+                if (element == undefined) { return; }
+
+                $("#imgModal").attr("src", element);
+
+                $("#popUp").dialog({
+                    modal: true,
+                    resizable: false,
+                    width: $(window).width() * 0.95,
+                    height: $(window).height() * 0.8,
+                });
+            }
+        </script>
+    </head>
+<div class="jumbotronNosCours">
+
+    @Html.LabelForModel(@Model.SelectedIndexTheme.ToString(), new { id = "ThemeCursor", style = "display: none;" })
+
+    <div id="themesDifferents">
+        <table id="table1">
+            <tr>
+                <td id="buttonPrevious">&#8656;</td>
+                <td>@Html.Label(@Model.AllTitresThemeDistinct.ElementAt(@Model.SelectedIndexTheme), new { id = "labelTheme" }) </td>
+                <td id="buttonNext">&#8658;</td>
+            </tr>
+        </table>
+    </div>
+    <div id="themesSelected2" class="classTableThemesSelected">
+        <table id="tableThemesSelected">
+            <ul>
+                @foreach (var item in Model.ALL_ThemesSelected)
+                {
+                <li style="color:black;">
+                    @{@Html.Label(item.TitreTheme, new { onmouseout = "unhover(this);", onmouseover = "hover(this);", onclick = "addUrlToVideo('" + item.UrlTheme + "')" });}
+                    @{
+                        string classForBinocular = @item.Image == string.Empty ? "classDisplayNone" : "";
+                    }
+                    <i class="fa fa-binoculars @classForBinocular" style="font-size: 20px;color: darkkhaki;margin-left: 15px;text-shadow: 1px 1px 1px blue;" onclick="showPopup(@item.Image)"></i>
+                </li>
+                }
+            </ul>
+        </table>
+    </div>
+
+    <iframe id="videoIframe" class="classVideoIFrame" src="" title="YouTube video player" frameborder="0" allow="autoplay;accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div id="popUp">  
+    <img id="imgModal" src="" height="100" width="100" style="width: 100%;height: 100%;object-fit: contain;" onclick="$('#popUp').dialog('close')"/>
+</div>
+
+@Styles.Render("~/styles/myStylessheet.css")

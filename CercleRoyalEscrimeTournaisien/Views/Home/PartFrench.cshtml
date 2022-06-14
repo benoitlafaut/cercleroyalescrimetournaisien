@@ -1,0 +1,14 @@
+﻿@using CercleRoyalEscrimeTournaisien.Models;
+
+@model ModelViewEpubFile
+
+<div id="textFrancais" style="border:1px solid black;width: 100%;height: 100%;overflow: hidden;overflow-y: auto;">
+    <table>
+        <ul style="margin-right: 35px;">
+            @foreach (var item in Model.RowsEpubToShow)
+            {
+                <li style="margin: 10px 0; font-size: 18px;"><div>@item.ToString()</div></li>
+            }
+        </ul>
+    </table>
+</div>
