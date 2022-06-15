@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     @* <script src="https://code.jquery.com/jquery-migrate-3.4.0.js"></script>*@
 
-
+    
     <style>
         .collapsible {
             background-color: #777;
@@ -41,7 +41,7 @@
     <button type="button" class="collapsible" id="btn_PartFrenchDIV" onclick="ChangeLayout('/Home/Change_PartFrenchDIV');">Texte français</button>
     <button type="button" class="collapsible" id="btn_PartChangeLanguageDIV" onclick="ChangeLayout('/Home/Change_PartChangeLanguageDIV');">Boutons to change language</button>
     <button type="button" class="collapsible" id="btn_PartTranslateDIV" onclick="ChangeLayout('/Home/Change_PartTranslateDIV');">View texte translated</button>
-    @Html.TextBox("hour",  "",new { style = "width: 50px;text-align:center;margin-left: 43px;", @Value = "5" })
+    @Html.TextBox("hour",  "",new { style = "width: 50px;text-align:center;margin-left: 43px;", @Value = "0.1" })
     <button type="button" class="collapsible" id="btn_SayHour" onclick="SayHour();">Say hour each x minutes</button>
     <div id="PartChargerFileDIV">
         @Html.Partial("PartChargerFile", Model)

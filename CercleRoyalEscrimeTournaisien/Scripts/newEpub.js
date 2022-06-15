@@ -1,4 +1,4 @@
-﻿var myInterval= "";
+﻿var myInterval = "";
 
 function CreateFileEpub() {
     var formData = new FormData();
@@ -69,7 +69,7 @@ function ChangeEpub(url, IsToListenNew, addLines) {
             data.append(allfilesSelect[i].name, allfilesSelect[i]);
         }
         data.append('IsToListenNew', IsToListenNew);
-        data.append('addLines', addLines );
+        data.append('addLines', addLines);
         var processdata = false;
         var contentType = false;
     }
@@ -88,9 +88,9 @@ function ChangeEpub(url, IsToListenNew, addLines) {
             ChangeVisibilityDiv();
 
             if ($("#IsChangeLanguageEnglish").prop('checked') == true || $("#IsChangeLanguageAllemand").prop('checked') == true || $("#IsChangeLanguageEspagnol").prop('checked') == true || $("#IsChangeLanguageNeerlandais").prop('checked') == true) { translateText(); }
-            if ($("#PartFrenchDIV").css('display') == 'none' ) { translateText();}
+            if ($("#PartFrenchDIV").css('display') == 'none') { translateText(); }
 
-            
+
 
             if ($("#IsToListen").val() == 'True') {
                 PlaySound('fr');
@@ -101,8 +101,8 @@ function ChangeEpub(url, IsToListenNew, addLines) {
                 $("#texteTranslate").css('height', '100%');
             }
         },
-        failure: function (response) {},
-        error: function (response) {}
+        failure: function (response) { },
+        error: function (response) { }
     });
 }
 
@@ -127,13 +127,13 @@ function ChangeVisibilityDivByElements(element1, element2, element3) {
 }
 
 function ChangeVisibility(boutonElement, element) {
-    if (element.css("display")  == "none") {
+    if (element.css("display") == "none") {
         element.css("display", "block");
         boutonElement.css("color", "yellowgreen");
     }
     else {
         element.css("display", "none");
-        boutonElement.css("color", "red");        
+        boutonElement.css("color", "red");
     }
 }
 
@@ -143,15 +143,26 @@ function SayHour() {
 }
 
 function SayHourEachSeconde() {
-  var language = 'fr-FR_ReneeV3Voice';
-    var dt = new Date();
-    var time = dt.getHours() + " heures " + dt.getMinutes() ;
-    textToSpeak = time;
-    var audioElement = document.getElementById('audioElement1');
-    audioElement.src = 'https://text-to-speech-demo.ng.bluemix.net/api/v3/synthesize?' + 'text=' + encodeURIComponent(textToSpeak) + '&voice=' + language + '&download=true&accept=audio%2Fmp3';
-    audioElement.pause();
-    audioElement.load();
-    audioElement.play();
+
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=Tournai,be&appid=bc12083e70d2d22298c2df1cec7101d9&units=metric"
+
+    $.getJSON(url).then(function (data) {
+
+        var language = 'fr-FR_ReneeV3Voice';
+        var dt = new Date();
+        var time = "il est " + dt.getHours() + " heures " + dt.getMinutes() + ". ";
+        textToSpeak = time;
+
+        textToSpeak += "il fait " + data.main.temp.toFixed(0) + ' °.';
+
+        var audioElement = document.getElementById('audioElement1');
+        audioElement.src = 'https://text-to-speech-demo.ng.bluemix.net/api/v3/synthesize?' + 'text=' + encodeURIComponent(textToSpeak) + '&voice=' + language + '&download=true&accept=audio%2Fmp3';
+        audioElement.pause();
+        audioElement.load();
+        audioElement.play();
+    });
+
+  
 }
 
 function ChangeLayout(url) {
@@ -168,8 +179,8 @@ function ChangeLayout(url) {
         processData: processdata,
         contentType: contentType,
         success: function (result) {
-                $('#EpubDIV').html(result.modelViewEpubFile);
-                ChangeEpub('/Home/ChangeEpub', '0', 0);
+            $('#EpubDIV').html(result.modelViewEpubFile);
+            ChangeEpub('/Home/ChangeEpub', '0', 0);
         },
         failure: function (response) { },
         error: function (response) { }
@@ -263,13 +274,13 @@ function translateText() {
     for (var i = 0; i < $("#RowsEpubToShowTranslated_Count").val(); i++) {
         $("#RowsEpubToShowTranslated_" + i + "_").val('');
     }
-    
+
     for (var i = 0; i < nombreDeLignesToSelect; i++) {
         texteToTranslate = $("#RowsEpubToShow" + "_" + i + "_").val();
 
         if (texteToTranslate != '') {
-            clickTranslate(essai,texteToTranslate, langueDestination, i);
-        }        
+            clickTranslate(essai, texteToTranslate, langueDestination, i);
+        }
     }
 }
 
@@ -314,9 +325,9 @@ function everyTime(language) {
     }
 
     ChangeEpub('/Home/ChangeEpub', language, 5);
-    
+
 }
-function clickTranslate(essai,texteToTranslate, langueDestination, indexRow) {
+function clickTranslate(essai, texteToTranslate, langueDestination, indexRow) {
     var data = JSON.stringify({
         format: "text",
         from: "fra",
