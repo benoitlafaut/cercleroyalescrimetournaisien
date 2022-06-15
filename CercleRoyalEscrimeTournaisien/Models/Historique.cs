@@ -9,7 +9,7 @@ namespace CercleRoyalEscrimeTournaisien
         {
             get
             {
-                string Histoire = "<pre>" + "<h2>&#x25E3" + "Le 01 septembre 1884" + "&#9698</h2>";
+                string Histoire = "<pre>" + "<h2>&#x25E3" + "Le 001 septembre 1884" + "&#9698</h2>";
                 Histoire += Environment.NewLine + "Fondation à l'hôtel des Neuf Provinces du cercle de Tournai sous le nom de 'Tournai KINIF Club' par le Maître Henri Kinif, ";
                 Histoire += Environment.NewLine + "ex premier Maître au 3ème Chasseur à Pieds et Maître Van Rodesa, ex premier Maître au 4ème Lanciers.";
                 Histoire += Environment.NewLine + "";
