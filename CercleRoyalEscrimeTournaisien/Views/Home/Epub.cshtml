@@ -41,7 +41,7 @@
     <button type="button" class="collapsible" id="btn_PartFrenchDIV" onclick="ChangeLayout('/Home/Change_PartFrenchDIV');">Texte français</button>
     <button type="button" class="collapsible" id="btn_PartChangeLanguageDIV" onclick="ChangeLayout('/Home/Change_PartChangeLanguageDIV');">Boutons to change language</button>
     <button type="button" class="collapsible" id="btn_PartTranslateDIV" onclick="ChangeLayout('/Home/Change_PartTranslateDIV');">View texte translated</button>
-    @Html.TextBox("hour",  "",new { style = "width: 50px;text-align:center;margin-left: 43px;", @Value = "0.1" })
+    @Html.TextBox("hour",  "",new { style = "width: 50px;text-align:center;margin-left: 43px;", @Value = "1" })
     <button type="button" class="collapsible" id="btn_SayHour" onclick="SayHour();">Say hour each x minutes</button>
     <div id="PartChargerFileDIV">
         @Html.Partial("PartChargerFile", Model)
